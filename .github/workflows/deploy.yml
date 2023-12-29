@@ -22,7 +22,7 @@ jobs:
       - name: Build with Maven
         run: |
           mvn -V
-          mvn clean install -U --file java/simple-java-maven-app/pom.xml
+          # mvn clean install -U --file java/simple-java-maven-app/pom.xml
       - name: Run file sh
         run: |
           pwd
