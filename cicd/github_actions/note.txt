@@ -52,6 +52,10 @@ $ cat /u01/ssh/github_runer_thinhnq.pub | ssh githubuser@103.163.119.189 'cat >>
 $ cat /u01/ssh/id_rsa
 
 
+
+FIX set password
+$ passwd githubuser
+
 FIX other user run command: docker 
 # https://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo
 $ sudo groupadd docker
