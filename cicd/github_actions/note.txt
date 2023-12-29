@@ -33,7 +33,7 @@ Lưu ý: có thể bỏ qua lệnh check sha sum được
 2. ERROR: Must not run with sudo
 Tạo mới 1 user: githubuser
 $ sudo useradd githubuser
-$ chown -R githubuser /u01/actions-runner/
+$ chown -R githubuser /u01/
 $ su githubuser
 
 
@@ -41,3 +41,12 @@ $ su githubuser
 Execute sudo ./bin/installdependencies.sh to install any missing Dotnet Core 6.0 dependencies.
 
 $sudo ./bin/installdependencies.sh
+
+=================================================================
+$ mkdir /u01/ssh
+$ cd /u01/ssh/
+$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+name = github_runer_thinhnq
+
+$ cat /u01/ssh/github_runer_thinhnq.pub | ssh githubuser@103.163.119.189 'cat >> /u01/ssh/authorized_keys'
+$ cat /u01/ssh/id_rsa

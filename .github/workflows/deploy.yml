@@ -24,5 +24,5 @@ jobs:
       - name: Deploy to server
         run: |
           echo "Starting deployment..."
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no username@host "cd /home/designcise && git pull origin main && <your-other-commands>"
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no githubuser@103.163.119.189 "cd /u01/github/ && git pull origin main && ls"
           echo "Deployment completed."
