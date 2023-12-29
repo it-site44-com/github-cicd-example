@@ -61,3 +61,7 @@ FIX other user run command: docker
 $ sudo groupadd docker
 $ sudo gpasswd -a githubuser docker
 $ newgrp docker
+
+
+FIX lỗi ko run được file sh
+chmod +x /u01/github_runer_thinhnq.sh
