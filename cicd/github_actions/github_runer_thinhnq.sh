@@ -24,8 +24,11 @@ docker run --name nginx_image -p 80:80 -d nginx_image
 
 
 # STEP [jdk_image]
+# build maven
+mvn clean install -U --file java/simple-java-maven-app/pom.xml
+
 # build docker image
-docker build -t jdk_image ./java
+docker build -t jdk_image ./java/simple-java-maven-app
 
 # remove container by name
 docker rm -f jdk_image

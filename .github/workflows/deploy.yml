@@ -13,16 +13,8 @@ jobs:
     name: Deploy
     runs-on: github_runer_thinhnq
     steps:
-      - name: Checkout code + Set up JDK 8 + Set up Maven
-        uses: s4u/setup-maven-action@v1.5.0
-        with:
-          java-version: '8'
-          distribution: 'temurin'
-          cache: maven
-      - name: Build with Maven
-        run: |
-          # mvn -V
-          # mvn clean install -U --file java/simple-java-maven-app/pom.xml
+      - name: Checkout code
+        uses: actions/checkout@v3
       - name: Run file sh
         run: |
           pwd
