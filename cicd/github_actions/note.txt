@@ -1,0 +1,43 @@
+https://github.com/it-site44-com/github-cicd-example/settings/actions/runners/new?arch=x64&os=linux
+
+1.Download
+# Create a folder
+$ mkdir actions-runner && cd actions-runner# Download the latest runner package
+$ curl -o actions-runner-linux-x64-2.311.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.311.0/actions-runner-linux-x64-2.311.0.tar.gz# Optional: Validate the hash
+$ echo "29fc8cf2dab4c195bb147384e7e2c94cfd4d4022c793b346a6175435265aa278  actions-runner-linux-x64-2.311.0.tar.gz" | shasum -a 256 -c# Extract the installer
+$ tar xzf ./actions-runner-linux-x64-2.311.0.tar.gz
+
+
+
+2. Configure
+# Create the runner and start the configuration experience
+$ ./config.sh --url https://github.com/it-site44-com/github-cicd-example --token AZ7PKINYV2OOVACQ57U7WL3FR3IAO# Last step, run it!
+$ ./run.sh
+
+
+
+3. Using your self-hosted runner
+# Use this YAML in your workflow file for each job
+runs-on: self-hosted
+
+
+FIX:
+1. ERROR: -bash: shasum: command not found
+$ ln -s /usr/bin/sha1sum /usr/bin/shasum
+or
+$ ln -s /usr/bin/sha256sum /usr/bin/shasum
+
+Lưu ý: có thể bỏ qua lệnh check sha sum được
+
+
+2. ERROR: Must not run with sudo
+Tạo mới 1 user: githubuser
+$ sudo useradd githubuser
+$ chown -R githubuser /u01/actions-runner/
+$ su githubuser
+
+
+3. ERROR: Libicu's dependencies is missing for Dotnet Core 6.0
+Execute sudo ./bin/installdependencies.sh to install any missing Dotnet Core 6.0 dependencies.
+
+$sudo ./bin/installdependencies.sh

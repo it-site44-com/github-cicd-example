@@ -1,0 +1,28 @@
+# https://www.designcise.com/web/tutorial/how-to-deploy-to-remote-server-using-ssh-and-github-actions
+
+
+name: Deployment Workflow
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: github_runer_thinhnq
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_DEPLOY_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+      - name: Deploy to server
+        run: |
+          echo "Starting deployment..."
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no username@host "cd /home/designcise && git pull origin main && <your-other-commands>"
+          echo "Deployment completed."
